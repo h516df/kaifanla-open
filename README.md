@@ -21,27 +21,16 @@
 ```powershell
 .\gradlew.bat testDebugUnitTest  # 单元测试
 .\gradlew.bat assembleDebug      # 测试版，包名带 .debug，可以和正式版装在同一台手机上
-.\gradlew.bat assembleRelease    # 正式版，约 22 MB（中文 OCR 的模型和 native 库打进了包里）
+.\gradlew.bat assembleRelease -PunsignedRelease=true  # 仅未签名构建候选，不能安装或作为官方更新
 ```
 
 ## 签名
 
-**本仓库不含任何签名密钥。** 想出自己的正式包，自己生成一个：
+**本仓库不含原正式签名材料，普通开发和 PR 构建也不读取它们。** 测试使用独立的 `.debug` 应用 ID。默认 `assembleRelease` 会拒绝执行；显式 `-PunsignedRelease=true` 仅生成未签名候选，不能当作可安装的官方更新。
 
-```powershell
-keytool -genkeypair -v -keystore keystore/release.jks -keyalg RSA -keysize 2048 -validity 10000 -alias mykey
-```
+官方包名仍为 `com.jintianchishenme.app`。覆盖升级必须沿用原证书，SHA256 为 `cd1c51e824a2f3db38f85ae8bcb98b84a3b8024f0840f1c5dcab3072a9bb4e4d`，不能生成新证书替代。受控签名任务通过仓库之外的 `KAIFANLA_SIGNING_PROPERTIES` 指定配置位置，配置名称为 `storeFile`、`storePassword`、`keyAlias`、`keyPassword`；只有显式 `-PofficialRelease=true` 才读取。缺少原材料、密码错误、证书不符或私钥不可用都会拒绝正式构建。不要将原私钥或密码提交到本公开库。
 
-然后在项目根目录建 `keystore.properties`：
-
-```properties
-storeFile=../keystore/release.jks
-storePassword=你的口令
-keyAlias=mykey
-keyPassword=你的口令
-```
-
-没有 `keystore.properties` 时 `assembleRelease` 会退回 debug 签名，仍可编译和安装测试。
+本库的无凭据云端检查覆盖开发包、未签名候选与缺配置拒绝；它不代表原正式签名云迁移或覆盖升级已经验收。旧私有项目的签名材料与历史不复制到这里，正式签名、资料迁移及真实设备结果分别交接。
 
 ## 用到的开源项目
 
