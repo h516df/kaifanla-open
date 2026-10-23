@@ -1,0 +1,30 @@
+[versions]
+androidGradlePlugin = "9.0.1"
+kotlin = "2.3.20"
+androidxActivity = "1.13.0"
+androidxComposeBom = "2026.03.01"
+androidxCore = "1.18.0"
+androidxLifecycle = "2.9.4"
+junit = "4.13.2"
+coil = "3.4.0"
+# 中文 OCR。必须是这个「bundled」坐标：模型打进 APK，不依赖 Google Play 服务。
+mlkitTextChinese = "16.0.1"
+
+[libraries]
+androidx-emoji2-emojipicker = { module = "androidx.emoji2:emoji2-emojipicker", version = "1.7.0" }
+junit = { module = "junit:junit", version.ref = "junit" }
+org-json = { module = "org.json:json", version = "20250517" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+mlkit-text-recognition-chinese = { module = "com.google.mlkit:text-recognition-chinese", version.ref = "mlkitTextChinese" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

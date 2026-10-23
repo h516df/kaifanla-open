@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="108"
+                android:endY="108">
+                <item android:offset="0" android:color="#FFFFF3F8" />
+                <item android:offset="1" android:color="#FFFFCDE1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- 角落里的小星星 -->
+    <path android:fillColor="#80FFFFFF" android:pathData="M24,20 Q24,26 30,26 Q24,26 24,32 Q24,26 18,26 Q24,26 24,20 Z" />
+    <path android:fillColor="#66FFFFFF" android:pathData="M86,78 Q86,82 90,82 Q86,82 86,86 Q86,82 82,82 Q86,82 86,78 Z" />
+</vector>

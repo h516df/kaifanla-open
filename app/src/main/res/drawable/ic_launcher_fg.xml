@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 外圈 -->
+    <path android:fillColor="#FFFF8DB8" android:pathData="M24,56 a30,30 0 1,0 60,0 a30,30 0 1,0 -60,0 Z" />
+    <!-- 六块马卡龙色扇区 -->
+    <path android:fillColor="#FFFFC8DD" android:pathData="M54,56 L54,30 A26,26 0 0,1 76.52,43 Z" />
+    <path android:fillColor="#FFBDE0FE" android:pathData="M54,56 L76.52,43 A26,26 0 0,1 76.52,69 Z" />
+    <path android:fillColor="#FFFFE5A8" android:pathData="M54,56 L76.52,69 A26,26 0 0,1 54,82 Z" />
+    <path android:fillColor="#FFCDB4DB" android:pathData="M54,56 L54,82 A26,26 0 0,1 31.48,69 Z" />
+    <path android:fillColor="#FFC7F0D8" android:pathData="M54,56 L31.48,69 A26,26 0 0,1 31.48,43 Z" />
+    <path android:fillColor="#FFFFAFCC" android:pathData="M54,56 L31.48,43 A26,26 0 0,1 54,30 Z" />
+    <!-- 白色描边和分隔线 -->
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="2" android:pathData="M28,56 a26,26 0 1,0 52,0 a26,26 0 1,0 -52,0" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="1.2" android:pathData="M54,30 L54,82 M76.52,43 L31.48,69 M76.52,69 L31.48,43" />
+    <!-- 外圈小灯 -->
+    <path android:fillColor="#FFFFF59D" android:pathData="M80.4,56 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z M52.4,84 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z M24.4,56 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M72.2,75.8 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z M32.6,75.8 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z M32.6,36.2 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z M72.2,36.2 a1.6,1.6 0 1,0 3.2,0 a1.6,1.6 0 1,0 -3.2,0 Z" />
+    <!-- 中心白圆 + 小爱心 -->
+    <path android:fillColor="#FFFFFFFF" android:pathData="M46,56 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0 Z" />
+    <path android:fillColor="#FFFF6FA5" android:pathData="M54,60.2 C47.6,55.6 49.4,49.6 54,52.6 C58.6,49.6 60.4,55.6 54,60.2 Z" />
+    <!-- 顶部指针 -->
+    <path android:fillColor="#FFE85590" android:pathData="M48.5,21 L59.5,21 L54,33 Z" />
+</vector>

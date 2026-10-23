@@ -1,0 +1,15 @@
+Shicang / 拾藏
+Copyright 2026 h516df
+
+This source distribution is based on the Shicang v0.4 application.
+Private development history, signing keys, credentials, internal operational
+records, device evidence and portrait test media are not part of this distribution.
+The portrait test fixture was replaced by an original deterministic geometric PNG.
+
+Third-party libraries and the Gradle wrapper remain under their respective licenses.
+See THIRD_PARTY_NOTICES.md. This notice does not relicense third-party works.
+
+Updater code adapted from h516df/shicang, commit 01a783076e50e2d89366188144a43db5bdf1d9b8, under Apache License 2.0.
+Source: https://github.com/h516df/shicang/tree/01a783076e50e2d89366188144a43db5bdf1d9b8/app/src/main/java/dev/h516/update
+Changes: food-app identity and wording, disabled public-channel configuration, no legacy authorization migration, application lifecycle/settings integration.
+No private signing material, credentials, user data or images are included.

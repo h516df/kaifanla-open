@@ -1,0 +1,328 @@
+[
+  {
+    "fixture": "01-shop.png",
+    "lines": [
+      {
+        "text": "示例川味小馆(示例店)",
+        "left": 35,
+        "top": 101,
+        "right": 332,
+        "bottom": 130
+      },
+      {
+        "text": "4.8 月售3000+",
+        "left": 44,
+        "top": 141,
+        "right": 187,
+        "bottom": 160
+      },
+      {
+        "text": "208米",
+        "left": 36,
+        "top": 174,
+        "right": 81,
+        "bottom": 189
+      },
+      {
+        "text": "|示例市示例大道 1 号示例街 c-252",
+        "left": 35,
+        "top": 203,
+        "right": 301,
+        "bottom": 220
+      },
+      {
+        "text": "营业中 10:00-22:00",
+        "left": 35,
+        "top": 233,
+        "right": 177,
+        "bottom": 249
+      },
+      {
+        "text": "优惠团购",
+        "left": 19,
+        "top": 303,
+        "right": 98,
+        "bottom": 324
+      },
+      {
+        "text": "UI1奇自选菜品】堂食40元自选..",
+        "left": 45,
+        "top": 354,
+        "right": 302,
+        "bottom": 372
+      },
+      {
+        "text": "Y36.6 ¥40.04",
+        "left": 35,
+        "top": 393,
+        "right": 177,
+        "bottom": 420
+      },
+      {
+        "text": "店销详情",
+        "left": 214,
+        "top": 30,
+        "right": 292,
+        "bottom": 53
+      },
+      {
+        "text": "已售9000+",
+        "left": 36,
+        "top": 420,
+        "right": 108,
+        "bottom": 437
+      },
+      {
+        "text": "【一元】福利购香锅面一块..",
+        "left": 33,
+        "top": 474,
+        "right": 271,
+        "bottom": 496
+      },
+      {
+        "text": "¥1",
+        "left": 36,
+        "top": 516,
+        "right": 66,
+        "bottom": 541
+      },
+      {
+        "text": "已售3万+",
+        "left": 36,
+        "top": 545,
+        "right": 97,
+        "bottom": 559
+      },
+      {
+        "text": "5.8折",
+        "left": 431,
+        "top": 423,
+        "right": 465,
+        "bottom": 437
+      },
+      {
+        "text": "5.8折",
+        "left": 431,
+        "top": 545,
+        "right": 462,
+        "bottom": 559
+      }
+    ]
+  },
+  {
+    "fixture": "02-deals.png",
+    "lines": [
+      {
+        "text": "UII奇·自选菜品】堂食40元自选..",
+        "left": 45,
+        "top": 87,
+        "right": 308,
+        "bottom": 105
+      },
+      {
+        "text": "¥36.6",
+        "left": 35,
+        "top": 123,
+        "right": 112,
+        "bottom": 149
+      },
+      {
+        "text": "已售9000+",
+        "left": 36,
+        "top": 150,
+        "right": 107,
+        "bottom": 166
+      },
+      {
+        "text": "[UI奇菜品20元自选】",
+        "left": 45,
+        "top": 193,
+        "right": 209,
+        "bottom": 216
+      },
+      {
+        "text": "¥当8.620-02",
+        "left": 35,
+        "top": 233,
+        "right": 177,
+        "bottom": 258
+      },
+      {
+        "text": "已售2000+",
+        "left": 36,
+        "top": 260,
+        "right": 108,
+        "bottom": 275
+      },
+      {
+        "text": "【招牌必点】超值单人餐(6荤6素)..",
+        "left": 45,
+        "top": 307,
+        "right": 315,
+        "bottom": 325
+      },
+      {
+        "text": "¥17.8 310+",
+        "left": 35,
+        "top": 344,
+        "right": 176,
+        "bottom": 370
+      },
+      {
+        "text": "已售1万+",
+        "left": 36,
+        "top": 372,
+        "right": 95,
+        "bottom": 386
+      },
+      {
+        "text": "40:04",
+        "left": 124,
+        "top": 125,
+        "right": 177,
+        "bottom": 150
+      },
+      {
+        "text": "UI時菜品60元自选】",
+        "left": 45,
+        "top": 417,
+        "right": 212,
+        "bottom": 435
+      },
+      {
+        "text": "56.6 6e-06",
+        "left": 36,
+        "top": 455,
+        "right": 179,
+        "bottom": 479
+      },
+      {
+        "text": "已售500+",
+        "left": 36,
+        "top": 482,
+        "right": 101,
+        "bottom": 496
+      },
+      {
+        "text": "已售3万+",
+        "left": 36,
+        "top": 592,
+        "right": 95,
+        "bottom": 606
+      },
+      {
+        "text": "【一元】福禾」购香網面一块..",
+        "left": 45,
+        "top": 527,
+        "right": 264,
+        "bottom": 545
+      },
+      {
+        "text": "团购套餐",
+        "left": 193,
+        "top": 31,
+        "right": 286,
+        "bottom": 51
+      },
+      {
+        "text": "用户推荐菜",
+        "left": 11,
+        "top": 633,
+        "right": 128,
+        "bottom": 656
+      },
+      {
+        "text": "招牌麻辣香锅",
+        "left": 35,
+        "top": 686,
+        "right": 140,
+        "bottom": 707
+      },
+      {
+        "text": "20人推荐",
+        "left": 36,
+        "top": 713,
+        "right": 92,
+        "bottom": 727
+      },
+      {
+        "text": "牛肉丸",
+        "left": 35,
+        "top": 749,
+        "right": 88,
+        "bottom": 766
+      },
+      {
+        "text": "34人推",
+        "left": 36,
+        "top": 773,
+        "right": 92,
+        "bottom": 786
+      },
+      {
+        "text": "宽粉",
+        "left": 285,
+        "top": 689,
+        "right": 319,
+        "bottom": 707
+      },
+      {
+        "text": "27人推荐",
+        "left": 286,
+        "top": 713,
+        "right": 342,
+        "bottom": 727
+      },
+      {
+        "text": "土豆片",
+        "left": 285,
+        "top": 749,
+        "right": 338,
+        "bottom": 766
+      },
+      {
+        "text": "41人推荐",
+        "left": 285,
+        "top": 773,
+        "right": 342,
+        "bottom": 786
+      },
+      {
+        "text": "5.8折",
+        "left": 426,
+        "top": 152,
+        "right": 461,
+        "bottom": 166
+      },
+      {
+        "text": "9.3折",
+        "left": 426,
+        "top": 262,
+        "right": 461,
+        "bottom": 276
+      },
+      {
+        "text": "5.7折",
+        "left": 426,
+        "top": 372,
+        "right": 460,
+        "bottom": 386
+      },
+      {
+        "text": "94折",
+        "left": 426,
+        "top": 482,
+        "right": 459,
+        "bottom": 496
+      },
+      {
+        "text": "5折",
+        "left": 426,
+        "top": 592,
+        "right": 447,
+        "bottom": 606
+      }
+    ]
+  }
+]
+

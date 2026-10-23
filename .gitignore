@@ -1,0 +1,15 @@
+build/
+.gradle/
+local.properties
+*.apk
+
+# 签名材料不进仓库：自己生成（见 README「签名」）
+keystore/
+keystore.properties
+*.jks
+*.keystore
+
+# 模拟器在本目录生成的本地文件
+Netease/
+
+.cloud/
