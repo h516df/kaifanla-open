@@ -1,17 +1,38 @@
 import java.util.Properties
+import java.security.KeyStore
+import java.security.MessageDigest
+import java.security.PrivateKey
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose.compiler)
 }
 
-// 正式签名的密码放在项目根目录的 keystore.properties。
-// 注意：本仓库不含任何签名材料；自己生成 keystore.properties 与 keystore/release.jks，
-// 所以仓库必须保持 private；这两个文件丢了就没法覆盖升级她手机上已装的 App。
+// 普通开发与未签名候选不读取正式配置；签名材料始终在公开源码之外。
 val unsignedRelease = providers.gradleProperty("unsignedRelease").map(String::toBoolean).getOrElse(false)
+val officialRelease = providers.gradleProperty("officialRelease").map(String::toBoolean).getOrElse(false)
+check(!(unsignedRelease && officialRelease)) { "Choose either an unsigned candidate or an official signed release." }
 val keystoreProps = Properties().apply {
-    val f = rootProject.file("keystore.properties")
-    if (!unsignedRelease && f.exists()) f.inputStream().use { load(it) }
+    if (officialRelease) {
+        val f = rootProject.file(System.getenv("KAIFANLA_SIGNING_PROPERTIES") ?: "keystore.properties")
+        if (f.exists()) f.inputStream().use { load(it) }
+    }
+}
+if (officialRelease) {
+    check(listOf("storeFile", "storePassword", "keyAlias", "keyPassword").all { !keystoreProps.getProperty(it).isNullOrBlank() }) {
+        "Original signing configuration missing or incomplete; official release refused."
+    }
+    try {
+        val file = rootProject.file(keystoreProps.getProperty("storeFile").removePrefix("../"))
+        val store = KeyStore.getInstance(file, keystoreProps.getProperty("storePassword").toCharArray())
+        val alias = keystoreProps.getProperty("keyAlias")
+        check(store.getKey(alias, keystoreProps.getProperty("keyPassword").toCharArray()) is PrivateKey)
+        val digest = MessageDigest.getInstance("SHA-256").digest(store.getCertificate(alias).encoded)
+            .joinToString("") { "%02x".format(it.toInt() and 0xff) }
+        check(digest == "cd1c51e824a2f3db38f85ae8bcb98b84a3b8024f0840f1c5dcab3072a9bb4e4d")
+    } catch (_: Exception) {
+        throw GradleException("Original signing identity mismatch or private key inaccessible; official release refused.")
+    }
 }
 
 android {
@@ -85,6 +106,13 @@ android {
     buildFeatures {
         compose = true
         resValues = true
+    }
+}
+
+gradle.taskGraph.whenReady {
+    val releaseRequested = allTasks.any { it.project == project && it.name in setOf("assembleRelease", "packageRelease", "bundleRelease") }
+    if (releaseRequested && !officialRelease && !unsignedRelease) {
+        throw GradleException("Official release requires -PofficialRelease=true and the original signer. Use -PunsignedRelease=true only for a non-installable unsigned candidate.")
     }
 }
 

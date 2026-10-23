@@ -1,0 +1,51 @@
+name: Credential-free build checks
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: credential-free-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - name: Reject implicit release and missing original signing inputs
+        run: |
+          set -euo pipefail
+          sdkmanager 'platforms;android-36' 'build-tools;36.0.0' >/dev/null
+          if bash gradlew --no-daemon --max-workers=1 :app:assembleRelease --dry-run > "$RUNNER_TEMP/implicit-release.log" 2>&1; then exit 1; fi
+          grep -q 'Official release requires -PofficialRelease=true' "$RUNNER_TEMP/implicit-release.log"
+          if bash gradlew --no-daemon --max-workers=1 :app:assembleRelease -PofficialRelease=true --dry-run > "$RUNNER_TEMP/missing-original.log" 2>&1; then exit 1; fi
+          grep -q 'Original signing configuration missing or incomplete' "$RUNNER_TEMP/missing-original.log"
+      - name: Build development package without reading signing properties
+        run: |
+          set -euo pipefail
+          # Deliberately invalid synthetic configuration: development must ignore it.
+          printf 'storeFile=synthetic-missing-signing-file\n' > keystore.properties
+          trap 'rm -f keystore.properties' EXIT
+          bash gradlew --no-daemon --max-workers=1 :app:testDebugUnitTest :app:assembleDebug
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging app/build/outputs/apk/debug/app-debug.apk > "$RUNNER_TEMP/debug-badging.txt"
+          grep -q "package: name='com.jintianchishenme.app.debug'" "$RUNNER_TEMP/debug-badging.txt"
+      - name: Build an explicitly unsigned candidate without original credentials
+        run: |
+          set -euo pipefail
+          bash gradlew --no-daemon --max-workers=1 :app:assembleRelease -PunsignedRelease=true
+          apk=app/build/outputs/apk/release/app-release-unsigned.apk
+          "$ANDROID_HOME/build-tools/36.0.0/aapt2" dump badging "$apk" > "$RUNNER_TEMP/release-badging.txt"
+          grep -q "package: name='com.jintianchishenme.app'" "$RUNNER_TEMP/release-badging.txt"
+          if grep -q 'application-debuggable' "$RUNNER_TEMP/release-badging.txt"; then exit 1; fi
+          if java -jar "$ANDROID_HOME/build-tools/36.0.0/lib/apksigner.jar" verify "$apk" >/dev/null 2>&1; then exit 1; fi
