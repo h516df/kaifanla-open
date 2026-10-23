@@ -194,7 +194,7 @@ class DoushengshengScanTest {
         val raw = listOf(
             Triple("17:31", 61, 27),
             Triple("初予食禾智慧餐厅", 23, 281),
-            Triple("白云区科园路2号铂中心1栋2层206~208", 24, 458),
+            Triple("示例区示例路 2 号铂中心1栋2层206~208", 24, 458),
             Triple("室1距你88米,步行2分钟", 23, 484),
             Triple("优惠团购", 24, 630),
             Triple("【新窖特惠肉包+豆浆+茶叶蛋一单人营养套", 151, 676),
@@ -211,7 +211,7 @@ class DoushengshengScanTest {
         val lines = raw.map { (text, left, top) -> OcrLine(text, left, top, left + 200, top + 18) }
         val scan = scanForImport(lines)
         assertEquals("初予食禾智慧餐厅", scan.shopName)
-        assertTrue(scan.address.contains("白云区科园路2号"))
+        assertTrue(scan.address.contains("示例区示例路 2 号"))
         assertEquals(2, scan.deals.size)
         assertEquals("【新窖特惠肉包+豆浆+茶叶蛋一单人营养套", scan.deals[0].title)
         assertEquals(5.9, scan.deals[0].currentPrice!!, 0.001)
@@ -232,7 +232,7 @@ class DoushengshengScanTest {
             add(line("924", gap = 0, height = 22, left = 200, right = 260))
             add(line("肉香与菜鲜共舞", gap = 30, height = 70))
             add(line("初予食禾智慧餐厅", gap = 10, height = 54))
-            add(line("白云区科园路2号凯铂中心1栋2层206~208", gap = 20, height = 30))
+            add(line("示例区示例路 2 号凯铂中心1栋2层206~208", gap = 20, height = 30))
             add(line("￥30/人|快餐", gap = 30, height = 28))
             add(line("优惠团购", gap = 30, height = 30))
             add(line("【新客特惠】肉包+豆浆+茶叶蛋|单人营养套", gap = 40, height = 34))
@@ -241,7 +241,7 @@ class DoushengshengScanTest {
         }
         val scan = scanDoushengsheng(lines)
         assertEquals("初予食禾智慧餐厅", scan.shopName)
-        assertEquals("白云区科园路2号凯铂中心1栋2层206~208", scan.address)
+        assertEquals("示例区示例路 2 号凯铂中心1栋2层206~208", scan.address)
         assertEquals(1, scan.deals.size)
         assertEquals(5.9, scan.deals[0].currentPrice!!, 0.001)
         assertEquals(7.0, scan.deals[0].originalPrice!!, 0.001)
@@ -254,7 +254,7 @@ class DoushengshengScanTest {
         val lines = listOf(
             line("初予食禾智慧餐厅", gap = 0, height = 64),
             line("￥30/人|快餐", gap = 16, height = 28),
-            line("白云区科园路2号凯铂中心1栋2层206~208", gap = 10, height = 30),
+            line("示例区示例路 2 号凯铂中心1栋2层206~208", gap = 10, height = 30),
             line("室1距你88米，步行2分钟", gap = 6, height = 28),
             line("优惠团购", gap = 40, height = 30),
             line("【新客特惠】肉包+豆浆+茶叶蛋|单人营养套", gap = 30, height = 34),
@@ -266,7 +266,7 @@ class DoushengshengScanTest {
         )
         val scan = scanDoushengsheng(lines)
         assertEquals("初予食禾智慧餐厅", scan.shopName)
-        assertTrue("地址要认出区/路/号", scan.address.contains("白云区科园路2号"))
+        assertTrue("地址要认出区/路/号", scan.address.contains("示例区示例路 2 号"))
         assertEquals(2, scan.deals.size)
         assertEquals(5.9, scan.deals[0].currentPrice!!, 0.001)
         assertEquals(7.0, scan.deals[0].originalPrice!!, 0.001)
